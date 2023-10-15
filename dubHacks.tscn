@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://bcnfet8piga0m"]
+
+[ext_resource type="Texture2D" uid="uid://b8r54alo04840" path="res://8bitBackground.jpeg" id="1_ql3ip"]
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="2_tpksq"]
+[ext_resource type="Texture2D" uid="uid://dj2ju3hst5cmo" path="res://amogus.png" id="3_1hrt3"]
+[ext_resource type="Texture2D" uid="uid://drancherieg28" path="res://GodotGun-1.png.png" id="4_s2lsj"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_xwbxd"]
+a = Vector2(1184, 12)
+b = Vector2(-1106, 3)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_3rkxj"]
+a = Vector2(-655, -960)
+b = Vector2(520, -961)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_k33am"]
+a = Vector2(-605, 956)
+b = Vector2(527, 960)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jlore"]
+a = Vector2(974, -563)
+b = Vector2(-1027, -556)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0kfj"]
+size = Vector2(218, 233)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="8BitBackground" type="Sprite2D" parent="."]
+position = Vector2(-50, -708)
+texture = ExtResource("1_ql3ip")
+
+[node name="Camera2D" type="Camera2D" parent="8BitBackground"]
+position = Vector2(-3, -2)
+zoom = Vector2(0.6, 0.6)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="8BitBackground"]
+position = Vector2(0, 14)
+
+[node name="lower" type="CollisionShape2D" parent="8BitBackground/StaticBody2D"]
+position = Vector2(20, 518)
+shape = SubResource("SegmentShape2D_xwbxd")
+
+[node name="right" type="CollisionShape2D" parent="8BitBackground/StaticBody2D"]
+rotation = 1.5708
+shape = SubResource("SegmentShape2D_3rkxj")
+
+[node name="left" type="CollisionShape2D" parent="8BitBackground/StaticBody2D"]
+position = Vector2(-7, -1)
+rotation = 1.5708
+shape = SubResource("SegmentShape2D_k33am")
+
+[node name="upper" type="CollisionShape2D" parent="8BitBackground/StaticBody2D"]
+shape = SubResource("SegmentShape2D_jlore")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("2_tpksq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-832, -1066)
+shape = SubResource("RectangleShape2D_j0kfj")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(-847, -1079)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_1hrt3")
+
+[node name="GodotGun-1_png" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(-739, -1014)
+scale = Vector2(9.875, 8.65625)
+texture = ExtResource("4_s2lsj")
+flip_h = true

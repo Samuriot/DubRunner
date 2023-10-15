@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bci43p04tgp71"]
+
+[ext_resource type="Script" path="res://Projectile.gd" id="1_rhocs"]
+[ext_resource type="Texture2D" uid="uid://dxup5yus746fg" path="res://GodotBullet.png" id="2_bijcu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r5vmu"]
+radius = 15.6205
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2(1, 0)
+script = ExtResource("1_rhocs")
+
+[node name="GodotBullet" type="Sprite2D" parent="Area2D2"]
+position = Vector2(-700, -578)
+scale = Vector2(1.96875, 2.40625)
+texture = ExtResource("2_bijcu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(-706, -582)
+shape = SubResource("CircleShape2D_r5vmu")
